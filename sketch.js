@@ -44,12 +44,12 @@ function setup() {
   earth.addAnimation("earth",earthImg)
   earth.scale = 5
   // earth.rotate = 4
-  earth.debug = true
+  // earth.debug = true
   earth.setCollider("rectangle",0,0,100,1200)
   rocket= createSprite(100, height/2, 50,50);
   rocket.addImage(rocketImg)
   rocket.scale=0.8
-  rocket.debug = true
+  // rocket.debug = true
   rocket.setCollider("rectangle",0,0,400,250)
 
 
@@ -65,11 +65,8 @@ function setup() {
 
 function draw() {
   background(space_bg);
-  text(mouseX+',' +mouseY,mouseX,mouseY)
-  fill("yellow")
-  textSize(50)
-  textFont("Courier New, monospace")
-  text("Space Shooter",1000,100)
+  //text(mouseX+',' +mouseY,mouseX,mouseY)
+  
 
   if(gameState === 0){
     fill("red")
@@ -85,20 +82,29 @@ function draw() {
     text("Click to start the game",windowWidth/2-300,650)
 
   }
-  heading.html("Life: "+life)
-  heading.style('color:red'); 
-  heading.position(150,20)
+
   if(mousePressedOver(start) && gameState === 0){
     gameState = 1
   }
 
-  scoreboard.html("Score: "+score)
-  scoreboard.style('color:red'); 
-  scoreboard.position(width-200,20)
+
 
   if(gameState===1){
     rocket.y=mouseY  
     start.visible = false
+
+    heading.html("Life: "+life)
+    heading.style('color:red'); 
+    heading.position(150,20)
+
+    fill("yellow")
+    textSize(50)
+    textFont("Courier New, monospace")
+    text("Space Shooter",1000,100)
+
+    scoreboard.html("Score: "+score)
+    scoreboard.style('color:red'); 
+    scoreboard.position(width-200,20)
 
     if (frameCount % 100 === 0) {
       drawufo();
@@ -145,8 +151,6 @@ function draw() {
 
     drawSprites();
   }
-    
-  
 }
 
 function drawufo(){
